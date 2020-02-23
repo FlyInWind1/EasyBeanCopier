@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'fly'
+version '0.1'
+
+allprojects {
+    repositories {
+        mavenLocal()
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+compileJava {
+    options.compilerArgs << '--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED'
+}
+dependencies {
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc6'
+    implementation 'com.squareup:javapoet:1.12.1'
+}
