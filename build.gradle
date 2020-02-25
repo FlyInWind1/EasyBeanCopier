@@ -8,6 +8,7 @@ version '0.1'
 allprojects {
     repositories {
         mavenLocal()
+        mavenCentral()
     }
 }
 
@@ -16,8 +17,12 @@ configurations {
         extendsFrom annotationProcessor
     }
 }
+
+int jdkVersion = JavaVersion.current().getMajorVersion().toInteger()
+boolean higher8 = jdkVersion > 8
 compileJava {
-    options.compilerArgs << '--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED'
+    if (higher8)
+        options.compilerArgs << '--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED'
 }
 dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
