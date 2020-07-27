@@ -1,4 +1,4 @@
-package fly.processor.beancopier;
+package fly.easybeancopier.jar;
 
 import javax.lang.model.type.TypeMirror;
 
@@ -41,5 +41,15 @@ public class FieldInfo {
 
     public void setTargetType(TypeMirror targetType) {
         this.targetType = targetType;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }

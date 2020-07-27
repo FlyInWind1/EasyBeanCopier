@@ -1,9 +1,12 @@
 plugins {
     id 'java'
+    id 'maven'
+    id "com.dua3.gradle.jpms" version "1.0"
 }
 
-group 'fly'
+group 'flyinwind'
 version '0.1'
+sourceCompatibility = JavaVersion.VERSION_1_8
 
 allprojects {
     repositories {
@@ -18,14 +21,22 @@ configurations {
     }
 }
 
-int jdkVersion = JavaVersion.current().getMajorVersion().toInteger()
-boolean higher8 = jdkVersion > 8
+//sourceCompatibility
+//int jdkVersion = JavaVersion.current().getMajorVersion().toInteger()
+boolean higher8 = sourceCompatibility.getMajorVersion().toInteger() > 8
 compileJava {
     if (higher8)
-        options.compilerArgs << '--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED'
+        options.compilerArgs.addAll(
+                '--add-exports=jdk.compiler/com.sun.tools.javac.api=EasyBeanCopier'
+                , '--add-exports=jdk.compiler/com.sun.tools.javac.code=EasyBeanCopier'
+                , '--add-exports=jdk.compiler/com.sun.tools.javac.model=EasyBeanCopier'
+                , '--add-exports=jdk.compiler/com.sun.tools.javac.processing=EasyBeanCopier'
+                , '--add-exports=jdk.compiler/com.sun.tools.javac.tree=EasyBeanCopier'
+                , '--add-exports=jdk.compiler/com.sun.tools.javac.util=EasyBeanCopier'
+        )
 }
+
 dependencies {
-    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+//    annotationProcessor 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'com.google.auto.service:auto-service:1.0-rc6'
-    implementation 'com.squareup:javapoet:1.12.1'
 }

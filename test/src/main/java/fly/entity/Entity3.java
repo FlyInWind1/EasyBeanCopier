@@ -1,11 +1,9 @@
 package fly.entity;
 
-import fly.processor.beancopier.BeanGenerator;
-
 /**
  * @author FlyInWind
  */
-@BeanGenerator({Entity1.class, Entity2.class})
+//@BeanGenerator({Entity1.class, Entity2.class})
 public class Entity3 {
     Integer int1;
     String str1;

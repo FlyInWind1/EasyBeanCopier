@@ -1,4 +1,4 @@
-package fly.processor.beancopier;
+package fly.easybeancopier.jar;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.TYPE)
-public @interface BeanGenerator {
+public @interface GenerateFrom {
     /**
      * Types to copy from
      */
