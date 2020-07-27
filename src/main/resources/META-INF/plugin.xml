@@ -1,0 +1,22 @@
+<idea-plugin>
+    <id>EasyBeanCopier-plugin</id>
+    <name>EasyBeanCopier</name>
+    <vendor email="2518509078@qq.com">FlyInWind</vendor>
+
+    <description>
+    Provide a easy way to copy bean
+    </description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>Lombook Plugin</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="fly.easybeancopier.plugin.processor.clazz.GenerateFromProcessor" />
+
+        <projectService serviceImplementation="fly.easybeancopier.plugin.provider.ProcessorProvider" />
+
+        <lang.psiAugmentProvider implementation="fly.easybeancopier.plugin.provider.ArgumentProvider" />
+    </extensions>
+</idea-plugin>
